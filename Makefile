@@ -14,4 +14,7 @@ ocaml: root
 	make -C ocaml/byterun
 	cp ocaml/byterun/ocamlrun root/bin
 	cp -r ocaml/lib root/
-	
+
+mktar:
+	rm -f ports.tar
+	cd root;tar cvf ../ports.tar *;cd ..
