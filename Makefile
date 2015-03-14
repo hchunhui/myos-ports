@@ -1,5 +1,5 @@
-.PHONY: all mario ocaml
-all: mario ocaml
+.PHONY: all mario ocaml dash
+all: mario ocaml dash
 
 root:
 	mkdir -p root
@@ -15,6 +15,9 @@ ocaml: root
 	cp ocaml/byterun/ocamlrun root/bin
 	cp -r ocaml/lib root/
 
+dash: root
+	cd dash; ./configure --host=i686-myos-elf;make;cd ..
+	cp dash/src/dash root/bin
 mktar:
 	rm -f ports.tar
 	strip root/bin/*
