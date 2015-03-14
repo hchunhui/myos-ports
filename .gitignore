@@ -1,0 +1,10 @@
+.depends
+*.o
+*.a
+*~
+*.bin
+*.x
+TAGS
+*.tar
+*.gz
+root
