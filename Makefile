@@ -17,4 +17,5 @@ ocaml: root
 
 mktar:
 	rm -f ports.tar
+	strip root/bin/*
 	cd root;tar cvf ../ports.tar *;cd ..
