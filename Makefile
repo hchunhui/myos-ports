@@ -1,5 +1,5 @@
-.PHONY: all mario ocaml dash
-all: mario ocaml dash
+.PHONY: all mario ocaml dash ed busybox
+all: mario ocaml dash ed busybox
 
 root:
 	mkdir -p root
@@ -18,6 +18,15 @@ ocaml: root
 dash: root
 	cd dash; ./configure --host=i686-myos-elf;make;cd ..
 	cp dash/src/dash root/bin
+
+ed: root
+	cd ed; ./configure CC=i686-myos-elf-gcc;make;cd ..
+	cp ed/ed root/bin
+
+busybox: root
+	make -C busybox
+	cp busybox/busybox root/bin
+
 mktar:
 	rm -f ports.tar
 	strip root/bin/*
