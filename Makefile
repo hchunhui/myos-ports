@@ -1,5 +1,5 @@
 .PHONY: all mario ocaml dash ed busybox uip
-all: mario ocaml dash ed busybox
+all: mario ocaml dash ed busybox uip
 
 root:
 	mkdir -p root

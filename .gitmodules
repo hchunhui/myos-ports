@@ -1,0 +1,3 @@
+[submodule "uip"]
+	path = uip
+	url = git@github.com:hchunhui/uip.git
