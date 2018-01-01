@@ -1,4 +1,4 @@
-.PHONY: all mario ocaml dash ed busybox
+.PHONY: all mario ocaml dash ed busybox uip
 all: mario ocaml dash ed busybox
 
 root:
@@ -26,6 +26,12 @@ ed: root
 busybox: root
 	make -C busybox
 	cp busybox/busybox root/bin
+
+uip: root
+	cd uip;	patch -p1 < ../patches/uip.patch
+	make -C uip/unix CC=i686-myos-elf-gcc
+	cd uip;	patch -Rp1 < ../patches/uip.patch
+	cp uip/unix/uip root/bin
 
 mktar:
 	rm -f ports.tar

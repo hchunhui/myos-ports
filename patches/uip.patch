@@ -1,0 +1,32 @@
+diff --git a/unix/tapdev.c b/unix/tapdev.c
+index 5b486df..02558d3 100644
+--- a/unix/tapdev.c
++++ b/unix/tapdev.c
+@@ -50,6 +50,7 @@
+ #include <sys/time.h>
+ #include <sys/uio.h>
+ #include <sys/socket.h>
++#include "uip_arp.h"
+ 
+ #ifdef linux
+ #include <sys/ioctl.h>
+@@ -57,7 +58,7 @@
+ #include <linux/if_tun.h>
+ #define DEVTAP "/dev/net/tun"
+ #else  /* linux */
+-#define DEVTAP "/dev/tap0"
++#define DEVTAP "/dev/virtio/1"
+ #endif /* linux */
+ 
+ #include "uip.h"
+@@ -90,9 +91,7 @@ tapdev_init(void)
+   }
+ #endif /* Linux */
+ 
+-  snprintf(buf, sizeof(buf), "ifconfig tap0 inet %d.%d.%d.%d",
+-	   UIP_DRIPADDR0, UIP_DRIPADDR1, UIP_DRIPADDR2, UIP_DRIPADDR3);
+-  system(buf);
++  ioctl(fd, 0, uip_ethaddr.addr);
+ 
+ }
+ /*---------------------------------------------------------------------------*/
