@@ -16,7 +16,7 @@ ocaml: root
 	cp -r ocaml/lib root/
 
 dash: root
-	cd dash; ./configure --host=i686-myos-elf;make;cd ..
+	cd dash; ./configure --host=i686-myos-elf;make CFLAGS="-O2 -DJOBS=0";cd ..
 	cp dash/src/dash root/bin
 
 ed: root
